@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies js</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner pt-3 pb-5">
+            <h1 class="text-center m-0">Movies catalog</h1>
+            <div class="row mt-3">
+                <div class="col-4">
+                    <form class="form" action="https://echo.htmlacademy.ru/" method="POST" autocomplete="off">
+
+                        <input class="form-control mb-3 name" type="text" name="name" placeholder="ave" aria-label="ave" />
+
+                        <input class="form-control mb-3 year" type="number" name="year" placeholder="enter year" aria-label="year" />
+                        
+                        <input class="form-control mb-3 raiting" type="text" name="raiting" placeholder="raiting"
+                            aria-label="number" />
+                        
+
+                        <select class="form-select mb-3 category" name="category" id="category" aria-label="number">
+
+                            <option value="all" selected>all</option>
+                        
+                        </select>
+
+                        
+                        <select class="form-select mb-3 sorting" name="sorting">
+
+                            <option value="ratingHighToLow" selected>Raiting (high to low)</option>
+
+                            <option value="ratingLowToHigh">Raiting (low to high)</option>
+
+                            <option value="yearHighToLow">Year (high to low)</option>
+
+                            <option value="yearLowToHigh">Year (low to high)</option>
+
+                        </select>
+                        
+                        
+                        <button class="btn btn-primary col-12" type="submit">Search</button>
+
+                    </form>
+
+                    <h2 class="mt-4 mb-2">Bookmared movies</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <p class="fw-bold m-0">Avangers: Infinity war</p>
+                            <button class="btn btn-danger mt-2" type="button">Remove</button>
+                        </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold m-0">The Avangers</p>
+                            <button class="btn btn-danger mt-2" type="button">Remove</button>
+                        </li>
+                        <li class="list-group-item">
+                            <p class="fw-bold m-0">12 years a Slave</p>
+                            <button class="btn btn-danger mt-2" type="button">Remove</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-8">
+                    <h4 class="m-0">Seach results: <span class="result"> 0 </span></h4>
+                    <div class="alert alert-success mt-2" role="alert">
+                        Use the form ong the left to search for a movie
+                    </div>
+
+                    <div class="row movielist">
+
+                    </div>
+
+                    <nav class="d-flex justify-content-center mt-5" aria-label="next list">
+                        <ul class="pagination">
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">1</span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template id="card">
+        <div class="col-6">
+            <div class="card mb-4" style="width: 100%;">
+                <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="0" class="active" aria-current="true"
+                            aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img style="object-fit: cover;" src="./images/avangers.jpg"
+                                class="d-block w-100 img-fluid" width="414" height="233" alt="avangers">
+                        </div>
+                        <div class="carousel-item">
+                            <img style="object-fit: cover;" src="./images/avangers-last.jpg"
+                                class="d-block w-100 img-fluid" width="414" height="233"
+                                alt="avangers last">
+                        </div>
+                        <div class="carousel-item">
+                            <img style="object-fit: cover;" src="./images/avangers-triller.jpg"
+                                class="d-block w-100 img-fluid" width="414" height="233"
+                                alt="avangers-triller">
+                        </div>
+                        <div class="carousel-item">
+                            <img style="object-fit: cover;" src="./images/avangers-game.jpg"
+                                class="d-block w-100 img-fluid" width="414" height="233"
+                                alt="avangers-game">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button"
+                        data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                        data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div> -->
+                <img style="object-fit: cover; border-top-left-radius: 5px; border-top-right-radius: 5px;" src="./images/avangers.jpg" class="d-block w-100 img-fluid img-movie"
+                    width="414" height="233" alt="avangers">
+                <div class="card-body">
+                    <h5 class="card-title m-0 title-movie">Avangers: Infinity war</h5>
+                    <div class="d-flex mt-2">
+                        <img class="mt-1" src="./images/calendar.svg" alt="date" width="18" height="18">
+                        <p class="ms-2 year-movie">2018</p>
+                    </div>
+                    <div class="d-flex">
+                        <img class="mt-1" src="./images/star.svg" alt="date" width="18" height="18">
+                        <p class="ms-2 raiting-movie">8.7</p>
+                    </div>
+
+                    <div class="mt-2">
+                        <p style="font-weight: 500;" id="categories">
+
+                        </p>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-1">
+                        <a href="#" class="btn  btn-outline-primary trailer-movie" target="_blank">Watch trailer</a>
+                        <!-------Burron trigger Modal------->
+                        <button type="button" class="btn btn-outline-secondary more-info-btn" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">More info</button>
+                        <button type="button" class="btn btn-outline-success">Bookmark</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!----- MODAL----->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title modal__title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal__body">
+                        
+                    </p>
+                  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/movies.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
