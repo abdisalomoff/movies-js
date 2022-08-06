@@ -127,6 +127,7 @@ if (inputSort == "yearLowToHigh") {
 render(filteredArray, elMovieList);
 })
 
+// Modal (more-info)----------------
 
 elMovieList.addEventListener("click", function(evt){
   let currentMoviesId = evt.target.dataset.moviesId;
